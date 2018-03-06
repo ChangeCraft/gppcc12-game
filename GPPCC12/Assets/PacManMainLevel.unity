@@ -28293,6 +28293,8 @@ MonoBehaviour:
   - {fileID: 1055130547}
   - {fileID: 241865063}
   - {fileID: 775143294}
+  playerTagSprite: {fileID: 1835690919700278, guid: 755444d26ab38e1458029aa9f3d0d5b4,
+    type: 2}
 --- !u!4 &2084100739
 Transform:
   m_ObjectHideFlags: 0
