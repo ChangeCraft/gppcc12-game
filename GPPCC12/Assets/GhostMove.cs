@@ -12,7 +12,7 @@ public class GhostMove : MonoBehaviour {
     [SerializeField]
     private string playerTag = "Player";
 
-    private bool isControlled = false;
+    private bool isControlled = true;
 
     private int stepSize = 2;
 
