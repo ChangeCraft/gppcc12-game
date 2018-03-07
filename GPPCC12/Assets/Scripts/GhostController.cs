@@ -95,4 +95,12 @@ public class GhostController : MonoBehaviour {
                 Destroy(child.gameObject);
         }
     }
+
+    public void PowerPillConsumed ()
+    {
+        foreach (var ghost in ghosts)
+        {
+            ghost.GetComponent<Ghost>().EnableEatable();
+        }
+    }
 }

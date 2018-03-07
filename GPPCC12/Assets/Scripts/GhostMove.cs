@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostMove : MonoBehaviour {
+public class GhostMove : MonoBehaviour
+{
 
     [SerializeField]
     private float speed = 0.4f;
     [SerializeField]
     private LayerMask wallLayerName;
 
-    [SerializeField]
-    private string playerTag = "Player";
-
-    private bool isControlled = true;
+    private bool canMove;
+    private bool isControlled;
 
     private int stepSize = 2;
 
@@ -22,17 +21,23 @@ public class GhostMove : MonoBehaviour {
 
     void Start()
     {
+        canMove = true;
+        isControlled = false;
+
         dest = transform.position;
     }
 
     private void Update()
     {
-        if (isControlled)
-            SetDesiredDirection();
+        if(canMove)
+        {
+            if (isControlled)
+                SetDesiredDirection();
 
-        //AnimationParameters
-        GetComponent<Animator>().SetFloat("DirX", currentDirection.x);
-        GetComponent<Animator>().SetFloat("DirY", currentDirection.y);
+            //AnimationParameters
+            GetComponent<Animator>().SetFloat("DirX", currentDirection.x);
+            GetComponent<Animator>().SetFloat("DirY", currentDirection.y);
+        }
     }
 
     void FixedUpdate()
@@ -41,7 +46,7 @@ public class GhostMove : MonoBehaviour {
         {
             //If the ghost is not controlled by the player set a random 
             //direction when a new one is required (if old destination is reached)
-            if (!isControlled)
+            if (!isControlled && canMove)
                 SetRndDesiredDirection();
 
             //ghosts are not allowed to turn 180°
@@ -88,7 +93,7 @@ public class GhostMove : MonoBehaviour {
         GetComponent<Rigidbody2D>().MovePosition(p);
     }
 
-    //Lookss if the choosen direction is free to go
+    //Looks if the choosen direction is free to go
     bool Valid(Vector2 dir)
     {
         Debug.DrawRay(transform.position, dir, Color.blue);
@@ -100,7 +105,7 @@ public class GhostMove : MonoBehaviour {
     }
 
     // Sets the desired direction based on player input
-    private void SetDesiredDirection ()
+    private void SetDesiredDirection()
     {
         if (Input.GetKey(KeyCode.W))
             desiredDirection = Vector2.up;
@@ -119,13 +124,16 @@ public class GhostMove : MonoBehaviour {
         if (rnd <= 0.25f)
         {
             desiredDirection = Vector2.up;
-        } else if (rnd <= 0.5f)
+        }
+        else if (rnd <= 0.5f)
         {
             desiredDirection = Vector2.down;
-        } else if (rnd <= 0.75f)
+        }
+        else if (rnd <= 0.75f)
         {
             desiredDirection = Vector2.right;
-        } else
+        }
+        else
         {
             desiredDirection = Vector2.left;
         }
@@ -138,19 +146,19 @@ public class GhostMove : MonoBehaviour {
     }
 
     //Sets the ghosts state to player controlled
-    public void SetControlledTo (bool control)
+    public void SetControlledTo(bool control)
     {
         isControlled = control;
     }
 
-    //Kill fuc**n MacPan
-    void OnTriggerEnter2D(Collider2D co)
+    public void ResetMovement ()
     {
-        if (co.tag == playerTag)
-        {
-            Destroy(co.gameObject);
-        }
-        
-        //Call some die function etc
+        desiredDirection = Vector2.zero;
+        currentDirection = Vector2.zero;
+    }
+
+    public void CanMove (bool _canMove)
+    {
+        canMove = _canMove;
     }
 }

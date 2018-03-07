@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58425366269087262}
   - component: {fileID: 50103704981899074}
   - component: {fileID: 114156361237396852}
+  - component: {fileID: 114978937981031468}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -112,6 +113,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   playerTag: Player
+--- !u!114 &114978937981031468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327583450924512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cef3a41a85535e4f95a5efe33f25f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostEatableAnimCtrl: {fileID: 22100000, guid: 73f030c222e1afd46b4aba3d59104dee,
+    type: 2}
+  ghostAnimStd: {fileID: 9100000, guid: 20f52bbd8da48994cba168b49a20676e, type: 2}
 --- !u!212 &212720203977742978
 SpriteRenderer:
   m_ObjectHideFlags: 1
