@@ -10,7 +10,7 @@ public class GhostMove : MonoBehaviour
     [SerializeField]
     private LayerMask wallLayerName;
 
-    private bool canMove;
+    private bool isMovable;
     private bool isControlled;
 
     private int stepSize = 2;
@@ -21,7 +21,7 @@ public class GhostMove : MonoBehaviour
 
     void Start()
     {
-        canMove = true;
+        isMovable = true;
         isControlled = false;
 
         dest = transform.position;
@@ -29,7 +29,7 @@ public class GhostMove : MonoBehaviour
 
     private void Update()
     {
-        if(canMove)
+        if(isMovable)
         {
             if (isControlled)
                 SetDesiredDirection();
@@ -46,7 +46,7 @@ public class GhostMove : MonoBehaviour
         {
             //If the ghost is not controlled by the player set a random 
             //direction when a new one is required (if old destination is reached)
-            if (!isControlled && canMove)
+            if (!isControlled && isMovable)
                 SetRndDesiredDirection();
 
             //ghosts are not allowed to turn 180°
@@ -94,7 +94,7 @@ public class GhostMove : MonoBehaviour
     }
 
     //Looks if the choosen direction is free to go
-    bool Valid(Vector2 dir)
+    private bool Valid(Vector2 dir)
     {
         Debug.DrawRay(transform.position, dir, Color.blue);
 
@@ -151,14 +151,24 @@ public class GhostMove : MonoBehaviour
         isControlled = control;
     }
 
+    public bool IsControlled ()
+    {
+        return isControlled;
+    }
+
     public void ResetMovement ()
     {
         desiredDirection = Vector2.zero;
         currentDirection = Vector2.zero;
     }
 
-    public void CanMove (bool _canMove)
+    public void SetMoveableTo (bool _isMoveable)
     {
-        canMove = _canMove;
+        isMovable = _isMoveable;
+    }
+
+    public bool IsMovable ()
+    {
+        return isMovable;
     }
 }

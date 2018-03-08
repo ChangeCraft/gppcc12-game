@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostController : MonoBehaviour {
+public class GhostController : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject[] ghosts;
 
     [SerializeField]
     private GameObject playerTagSprite;
+
+    [SerializeField]
+    private byte eatableTime = 5;
 
     private int currentControlledGhost = 0;
 
@@ -18,11 +22,12 @@ public class GhostController : MonoBehaviour {
         foreach (var ghost in ghosts)
         {
             GhostMove ghostMove = ghost.GetComponent<GhostMove>();
-            if(ghostMove == null)
+            if (ghostMove == null)
             {
                 Debug.LogError(ghost.name + " has no GhostMove Script attached!");
                 Destroy(this);
-            } else
+            }
+            else
             {
                 ghostMove.SetControlledTo(false);
             }
@@ -32,22 +37,32 @@ public class GhostController : MonoBehaviour {
     private void Update()
     {
         //On Space we want to switch to the next ghost
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             //Increments to next ghost because we want to switch to him
             currentControlledGhost++;
 
-            //If we where to overflow the arraylenght reset to 0
-            if (currentControlledGhost > ghosts.Length)
+            //If we were to overflow the arraylenght reset to 0
+            if (currentControlledGhost > ghosts.Length - 1)
                 currentControlledGhost = 0;
 
-            //Switch controlls to the given ghost
-            //if 0 no ghost can be controlled
-            SwitchControlledGhost(currentControlledGhost);
+            int oldGhost = currentControlledGhost;
+
+            do
+            {
+                currentControlledGhost = (currentControlledGhost + 1) % (ghosts.Length - 1);
+
+                if (ghosts[currentControlledGhost].GetComponent<GhostMove>().IsMovable())
+                {
+                    //Switch controlls to the given ghost
+                    SwitchControlledGhost(currentControlledGhost);
+                    break;
+                }
+            } while (currentControlledGhost != oldGhost);
         }
     }
 
-    private void SwitchControlledGhost (int _ghostNumber)
+    private void SwitchControlledGhost(int _ghostNumber)
     {
         //Sets all ghosts to not player controlled
         foreach (var ghost in ghosts)
@@ -57,22 +72,14 @@ public class GhostController : MonoBehaviour {
             ghostMove.SetControlledTo(false);
         }
 
-        //Sets the given ghost to be player controlled if ghostNumber
-        // is not 0, because 0 means no ghost is player controlled
-        if (_ghostNumber != 0)
-        {
-            //Subtraction done becaues the first array value has an index of 0
-            //and 0 is already preserved for "no ghost"
-            _ghostNumber--;
-
-            SetPlayerTag(_ghostNumber);
-            ghosts[_ghostNumber].GetComponent<GhostMove>().SetControlledTo(true);
-        }
+        //Sets the given ghost to be player controlled
+        SetPlayerTag(_ghostNumber);
+        ghosts[_ghostNumber].GetComponent<GhostMove>().SetControlledTo(true);
     }
 
     //Instantiates a player tag and adds it as a child to the
     //given ghost index in the ghost array
-    private void SetPlayerTag (int _ghostNumber)
+    private void SetPlayerTag(int _ghostNumber)
     {
         Transform ghostTransform = ghosts[_ghostNumber].transform;
 
@@ -83,24 +90,25 @@ public class GhostController : MonoBehaviour {
 
     //Removes All childs form the given Object that have the 
     //same tag as a PlayerTag
-    private void RemovePlayerTag (GameObject _ghost)
+    private void RemovePlayerTag(GameObject _ghost)
     {
         //cycle through all childs of the given ghost 
         for (int i = 0; i < _ghost.transform.childCount; i++)
         {
             Transform child = _ghost.transform.GetChild(i);
-            
+
             //Destroys the child if it is a playertag
             if (child.tag == playerTagSprite.tag)
                 Destroy(child.gameObject);
         }
     }
 
-    public void PowerPillConsumed ()
+    public void PowerPillConsumed()
     {
         foreach (var ghost in ghosts)
         {
-            ghost.GetComponent<Ghost>().EnableEatable();
+            StartCoroutine(ghost.GetComponent<Ghost>().Eatable(eatableTime));
+            //coroutine in ghost script 
         }
     }
 }

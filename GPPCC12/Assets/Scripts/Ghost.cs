@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Animations;
 
 [RequireComponent (typeof(GhostMove))]
@@ -31,14 +32,13 @@ public class Ghost : MonoBehaviour {
         eatable = false;
     }
 
-    public void EnableEatable ()
+    public IEnumerator Eatable (byte _eatableTime)
     {
         eatable = true;
         animator.runtimeAnimatorController = ghostEatableAnimCtrl;
-    }
 
-    public void DisableEatable ()
-    {
+        yield return new WaitForSeconds(_eatableTime);
+
         eatable = false;
         animator.runtimeAnimatorController = ghostAnimStd;
     }
@@ -59,7 +59,7 @@ public class Ghost : MonoBehaviour {
                 //Call some die function etc
             } else
             {
-                ghostMove.CanMove(false);
+                ghostMove.SetMoveableTo(false);
                 gameObject.transform.position = ghostWaitPosition;
                 ghostMove.SetDestinationToPosition();
                 ghostMove.ResetMovement();

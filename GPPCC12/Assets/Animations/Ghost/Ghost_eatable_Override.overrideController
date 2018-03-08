@@ -5,7 +5,7 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Ghost_vul_Override
+  m_Name: Ghost_eatable_Override
   m_Controller: {fileID: 9100000, guid: 20f52bbd8da48994cba168b49a20676e, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 1a29e7da210e25947aecb6085a7ab99e, type: 2}

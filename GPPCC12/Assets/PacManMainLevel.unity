@@ -3688,7 +3688,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1278953032048358, guid: 6d806bd50b630b74a95092e8bc0c09d8, type: 2}
       propertyPath: m_Name
-      value: BigDot (1)
+      value: PowerPill (1)
       objectReference: {fileID: 0}
     - target: {fileID: 114127659610587182, guid: 6d806bd50b630b74a95092e8bc0c09d8,
         type: 2}
@@ -10000,7 +10000,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1278953032048358, guid: 6d806bd50b630b74a95092e8bc0c09d8, type: 2}
       propertyPath: m_Name
-      value: BigDot (2)
+      value: PowerPill (2)
       objectReference: {fileID: 0}
     - target: {fileID: 114127659610587182, guid: 6d806bd50b630b74a95092e8bc0c09d8,
         type: 2}
@@ -15096,7 +15096,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1278953032048358, guid: 6d806bd50b630b74a95092e8bc0c09d8, type: 2}
       propertyPath: m_Name
-      value: BigDot (3)
+      value: PowerPill (3)
       objectReference: {fileID: 0}
     - target: {fileID: 114127659610587182, guid: 6d806bd50b630b74a95092e8bc0c09d8,
         type: 2}
@@ -23962,6 +23962,10 @@ Prefab:
       propertyPath: ghostController
       value: 
       objectReference: {fileID: 2084100738}
+    - target: {fileID: 1278953032048358, guid: 6d806bd50b630b74a95092e8bc0c09d8, type: 2}
+      propertyPath: m_Name
+      value: PowerPill
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d806bd50b630b74a95092e8bc0c09d8, type: 2}
   m_IsPrefabParent: 0
@@ -28341,6 +28345,7 @@ MonoBehaviour:
   - {fileID: 775143294}
   playerTagSprite: {fileID: 1835690919700278, guid: 755444d26ab38e1458029aa9f3d0d5b4,
     type: 2}
+  eatableTime: 5
 --- !u!4 &2084100739
 Transform:
   m_ObjectHideFlags: 0
