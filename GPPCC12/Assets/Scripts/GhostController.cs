@@ -14,7 +14,7 @@ public class GhostController : MonoBehaviour
     [SerializeField]
     private byte eatableTime = 5;
 
-    private int currentControlledGhost = 0;
+    private int currentControlledGhost;
 
     private void Start()
     {
@@ -32,6 +32,9 @@ public class GhostController : MonoBehaviour
                 ghostMove.SetControlledTo(false);
             }
         }
+
+		currentControlledGhost = 0;
+		SwitchControlledGhost (currentControlledGhost);
     }
 
     private void Update()
@@ -39,18 +42,11 @@ public class GhostController : MonoBehaviour
         //On Space we want to switch to the next ghost
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //Increments to next ghost because we want to switch to him
-            currentControlledGhost++;
-
-            //If we were to overflow the arraylenght reset to 0
-            if (currentControlledGhost > ghosts.Length - 1)
-                currentControlledGhost = 0;
-
             int oldGhost = currentControlledGhost;
 
             do
             {
-                currentControlledGhost = (currentControlledGhost + 1) % (ghosts.Length - 1);
+                currentControlledGhost = (currentControlledGhost + 1) % (ghosts.Length);
 
                 if (ghosts[currentControlledGhost].GetComponent<GhostMove>().IsMovable())
                 {
@@ -107,8 +103,11 @@ public class GhostController : MonoBehaviour
     {
         foreach (var ghost in ghosts)
         {
-            StartCoroutine(ghost.GetComponent<Ghost>().Eatable(eatableTime));
-            //coroutine in ghost script 
+			if (ghost.GetComponent<GhostMove>().IsMovable()) 
+			{
+				StartCoroutine(ghost.GetComponent<Ghost>().SetEatable(eatableTime));
+				//coroutine in ghost script 
+			}
         }
     }
 }

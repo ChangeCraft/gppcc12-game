@@ -32,12 +32,21 @@ public class Ghost : MonoBehaviour {
         eatable = false;
     }
 
-    public IEnumerator Eatable (byte _eatableTime)
+	public IEnumerator SetEatable (float _eatableTime)
     {
         eatable = true;
         animator.runtimeAnimatorController = ghostEatableAnimCtrl;
 
-        yield return new WaitForSeconds(_eatableTime);
+		float startTime = Time.time;
+		while (Time.time < startTime + _eatableTime) 
+		{
+			if (eatable == false) 
+			{
+				eatable = true;
+				animator.runtimeAnimatorController = ghostEatableAnimCtrl;
+			}
+			yield return null;
+		}
 
         eatable = false;
         animator.runtimeAnimatorController = ghostAnimStd;
