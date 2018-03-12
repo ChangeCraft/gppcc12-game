@@ -14,6 +14,9 @@ public class GhostController : MonoBehaviour
     [SerializeField]
     private byte eatableTime = 5;
 
+    [SerializeField]
+    private float slowFactor = 0.8f;
+
     private int currentControlledGhost;
 
     private void Start()
@@ -105,7 +108,7 @@ public class GhostController : MonoBehaviour
         {
 			if (ghost.GetComponent<GhostMove>().IsMovable()) 
 			{
-				StartCoroutine(ghost.GetComponent<Ghost>().SetEatable(eatableTime));
+				StartCoroutine(ghost.GetComponent<Ghost>().SetEatable(eatableTime, slowFactor));
 				//coroutine in ghost script 
 			}
         }

@@ -32,8 +32,9 @@ public class Ghost : MonoBehaviour {
         eatable = false;
     }
 
-	public IEnumerator SetEatable (float _eatableTime)
+	public IEnumerator SetEatable (float _eatableTime, float _speedMultiplicator)
     {
+        ghostMove.SetSpeed(ghostMove.GetSpeed() * _speedMultiplicator);
         eatable = true;
         animator.runtimeAnimatorController = ghostEatableAnimCtrl;
 
@@ -48,6 +49,7 @@ public class Ghost : MonoBehaviour {
 			yield return null;
 		}
 
+        ghostMove.SetSpeed(ghostMove.GetSpeed() / _speedMultiplicator);
         eatable = false;
         animator.runtimeAnimatorController = ghostAnimStd;
     }
@@ -64,7 +66,7 @@ public class Ghost : MonoBehaviour {
         {
             if (!eatable)
             {
-                Destroy(co.gameObject);
+                co.GetComponent<Pacman>().PacmanDie();
                 //Call some die function etc
             } else
             {

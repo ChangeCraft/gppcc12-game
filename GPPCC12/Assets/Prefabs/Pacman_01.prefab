@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58571933638199472}
   - component: {fileID: 50215219841637328}
   - component: {fileID: 114463393146482460}
+  - component: {fileID: 114270383713199938}
   m_Layer: 0
   m_Name: Pacman_01
   m_TagString: Player
@@ -96,6 +97,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114270383713199938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386062132061642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239d3641797e649408a351abeaf1f81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifes: 3
+  gameUI: {fileID: 0}
 --- !u!114 &114463393146482460
 MonoBehaviour:
   m_ObjectHideFlags: 1

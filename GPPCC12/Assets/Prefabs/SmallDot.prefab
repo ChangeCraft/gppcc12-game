@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   earnedScore: 100
+  sound: {fileID: 8300000, guid: 301bbd5b7ccb14049acd0c788159e098, type: 3}
 --- !u!212 &212406921468671976
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,8 +7,12 @@ public class PacmanMove : MonoBehaviour
 
     [SerializeField]
     private float speed = 0.4f;
+
     [SerializeField]
     private LayerMask wallLayerName;
+
+    [SerializeField]
+    public Vector3 spawnPosition;
 
     private int stepSize = 2;
 

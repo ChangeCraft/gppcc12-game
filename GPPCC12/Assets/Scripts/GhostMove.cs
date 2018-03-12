@@ -7,6 +7,7 @@ public class GhostMove : MonoBehaviour
 
     [SerializeField]
     private float speed = 0.4f;
+
     [SerializeField]
     private LayerMask wallLayerName;
 
@@ -154,6 +155,16 @@ public class GhostMove : MonoBehaviour
     public bool IsControlled ()
     {
         return isControlled;
+    }
+
+    public void SetSpeed (float _speed)
+    {
+        speed = _speed;
+    }
+
+    public float GetSpeed ()
+    {
+        return speed;
     }
 
     public void ResetMovement ()
