@@ -9,6 +9,9 @@ public class Pacman : MonoBehaviour {
     private int lifes;
 
     [SerializeField]
+    private LiveUI liveUI;
+
+    [SerializeField]
     private GameUI gameUI; 
 
     private int currentLives;
@@ -19,6 +22,15 @@ public class Pacman : MonoBehaviour {
     {
         currentLives = lifes;
         pacmanMove = GetComponent<PacmanMove>();
+
+        if(liveUI == null)
+        {
+            Debug.LogError("No LiveUi assigned" + name);
+            Destroy(this);
+        } else
+        {
+            liveUI.SetLives(lifes);
+        }
 	}
 
     public void PacmanDie()
@@ -31,6 +43,7 @@ public class Pacman : MonoBehaviour {
         } else
         {
             currentLives--;
+            liveUI.SubtractALife();
             transform.position = pacmanMove.spawnPosition;
             pacmanMove.SetDestinationToPosition();
         }

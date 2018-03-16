@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifes: 3
+  liveUI: {fileID: 0}
   gameUI: {fileID: 0}
 --- !u!114 &114463393146482460
 MonoBehaviour:
@@ -125,6 +126,7 @@ MonoBehaviour:
   wallLayerName:
     serializedVersion: 2
     m_Bits: 256
+  spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &212092074226292058
 SpriteRenderer:
   m_ObjectHideFlags: 1
