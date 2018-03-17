@@ -144,10 +144,10 @@ RectTransform:
   m_Father: {fileID: 1910507609}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -75}
-  m_SizeDelta: {x: 350, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5423108
 MonoBehaviour:
@@ -2957,7 +2957,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4071964289490014, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4071964289490014, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3000,17 +3000,27 @@ Prefab:
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostWaitPosition.y
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostRespawnPosition.y
-      value: -8
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostRespawnPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
+        type: 2}
+      propertyPath: ghostHomePosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
+        type: 2}
+      propertyPath: ghostHomePosition.x
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
@@ -8709,7 +8719,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4071964289490014, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4071964289490014, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8742,7 +8752,7 @@ Prefab:
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostWaitPosition.y
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
@@ -8752,7 +8762,17 @@ Prefab:
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostRespawnPosition.y
-      value: 4
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
+        type: 2}
+      propertyPath: ghostHomePosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
+        type: 2}
+      propertyPath: ghostHomePosition.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
@@ -10019,10 +10039,10 @@ RectTransform:
   m_Father: {fileID: 1910507609}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -25}
-  m_SizeDelta: {x: 350, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &865557286
 MonoBehaviour:
@@ -11958,7 +11978,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4071964289490014, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4071964289490014, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12006,12 +12026,17 @@ Prefab:
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostWaitPosition.y
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
         type: 2}
       propertyPath: ghostRespawnPosition.y
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114978937981031468, guid: e448e8ed7bfb13846bc98ca95444d1f5,
+        type: 2}
+      propertyPath: ghostHomePosition.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e448e8ed7bfb13846bc98ca95444d1f5, type: 2}

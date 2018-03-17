@@ -20,7 +20,7 @@ public class Ghost : MonoBehaviour {
     Vector2 ghostRespawnPosition;
 
     [SerializeField]
-    Vector2 ghostWaitPosition;
+    Vector2 ghostHomePosition;
 
     private bool eatable;
 
@@ -35,6 +35,8 @@ public class Ghost : MonoBehaviour {
         animator.runtimeAnimatorController = ghostAnimStd;
 
         eatable = false;
+
+        ToPosition(ghostHomePosition, false, ghostAnimStd);
     }
 
 	public IEnumerator SetEatable (float _eatableTime, float _speedMultiplicator)
@@ -75,15 +77,29 @@ public class Ghost : MonoBehaviour {
                 //Call some die function etc
             } else
             {
-                ghostMove.SetMoveableTo(false);
-                gameObject.transform.position = ghostWaitPosition;
-                ghostMove.SetDestinationToPosition();
-                ghostMove.ResetMovement();
-                animator.runtimeAnimatorController = ghostAnimStd;
+                ToPosition(ghostHomePosition, false, ghostAnimStd);
                 StartCoroutine(Respawn(ghostRespawnTime));
             }
         }
 
+    }
+
+    private void ToPosition (Vector2 _position, bool _movable, RuntimeAnimatorController _animatorController)
+    {
+        //Disabling the movement must be done first to prevent the ghost from searching
+        //a new destination after the destination has been reset
+        if (!_movable)
+            ghostMove.SetMoveableTo(_movable);
+
+        gameObject.transform.position = _position;
+        ghostMove.SetDestinationToPosition();
+        ghostMove.ResetMovement();
+        animator.runtimeAnimatorController = _animatorController;
+
+        //Enabling the movement must be done last to prevent the ghost from moving before
+        //the destination and postion have been set
+        if (_movable)
+            ghostMove.SetMoveableTo(_movable);
     }
 
     public IEnumerator Respawn (float _respawnTime)
@@ -95,11 +111,7 @@ public class Ghost : MonoBehaviour {
             yield return null;
         }
 
-        gameObject.transform.position = ghostRespawnPosition;
-        ghostMove.SetDestinationToPosition();
-        ghostMove.ResetMovement();
-        animator.runtimeAnimatorController = ghostAnimStd;
-        ghostMove.SetMoveableTo(true);
+        ToPosition(ghostRespawnPosition, true, ghostAnimStd);
     }
 }
 

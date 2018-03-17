@@ -17,23 +17,23 @@ public class GhostController : MonoBehaviour
     [SerializeField]
     private float slowFactor = 0.8f;
 
+    private float initGhostSpawnTime = 1.5f;
+
     private int currentControlledGhost;
 
     private void Start()
     {
         //cycle through all ghosts and disable their player control
+        //cycle through all ghosts and set their respawn time
         foreach (var ghost in ghosts)
         {
-            GhostMove ghostMove = ghost.GetComponent<GhostMove>();
-            if (ghostMove == null)
-            {
-                Debug.LogError(ghost.name + " has no GhostMove Script attached!");
-                Destroy(this);
-            }
-            else
-            {
-                ghostMove.SetControlledTo(false);
-            }
+            GhostMove ghostMoveScript = ghost.GetComponent<GhostMove>();
+            Ghost ghostScript = ghost.GetComponent<Ghost>();
+
+            ghostMoveScript.SetControlledTo(false);
+            StartCoroutine(ghostScript.Respawn(initGhostSpawnTime));
+
+            initGhostSpawnTime += initGhostSpawnTime;
         }
 
 		currentControlledGhost = 0;
