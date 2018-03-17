@@ -15,6 +15,11 @@ public class Ghost : MonoBehaviour {
     GhostMove ghostMove;
 
     [SerializeField]
+    float ghostRespawnTime = 5f;
+    [SerializeField]
+    Vector2 ghostRespawnPosition;
+
+    [SerializeField]
     Vector2 ghostWaitPosition;
 
     private bool eatable;
@@ -75,9 +80,26 @@ public class Ghost : MonoBehaviour {
                 ghostMove.SetDestinationToPosition();
                 ghostMove.ResetMovement();
                 animator.runtimeAnimatorController = ghostAnimStd;
+                StartCoroutine(Respawn(ghostRespawnTime));
             }
         }
 
+    }
+
+    public IEnumerator Respawn (float _respawnTime)
+    {
+        float _startTime = Time.time;
+
+        while(Time.time <= _startTime + _respawnTime)
+        {
+            yield return null;
+        }
+
+        gameObject.transform.position = ghostRespawnPosition;
+        ghostMove.SetDestinationToPosition();
+        ghostMove.ResetMovement();
+        animator.runtimeAnimatorController = ghostAnimStd;
+        ghostMove.SetMoveableTo(true);
     }
 }
 
