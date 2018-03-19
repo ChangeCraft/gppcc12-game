@@ -22,7 +22,7 @@ public class GhostMove : MonoBehaviour
 
     void Start()
     {
-        isMovable = true;
+        isMovable = false;
         isControlled = false;
 
         dest = transform.position;

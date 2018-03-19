@@ -12,7 +12,10 @@ public class Pacman : MonoBehaviour {
     private LiveUI liveUI;
 
     [SerializeField]
-    private GameUI gameUI; 
+    private GameUI gameUI;
+
+    [SerializeField]
+    GhostController ghostController;
 
     private int currentLives;
 
@@ -47,5 +50,14 @@ public class Pacman : MonoBehaviour {
             transform.position = pacmanMove.spawnPosition;
             pacmanMove.SetDestinationToPosition();
         }
+    }
+
+    public void DotCollision (int _earnedScore, AudioClip _sound, bool isPowerPill)
+    {
+        gameUI.AddToScore(_earnedScore);
+        AudioSource.PlayClipAtPoint(_sound, new Vector3(0, 0, 0));
+
+        if(isPowerPill)
+            ghostController.PowerPillConsumed();
     }
 }

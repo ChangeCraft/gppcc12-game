@@ -9,7 +9,7 @@ public class LiveUI : MonoBehaviour {
     {
         for (int i = 0; i < _lives; i++)
         {
-            GameObject instance = Instantiate(livePrefab, transform, false);
+            Instantiate(livePrefab, transform, false);
         }
     }
 

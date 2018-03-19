@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4713587979206864}
   - component: {fileID: 212739373821309192}
   - component: {fileID: 61790045802563612}
-  - component: {fileID: 114127659610587182}
+  - component: {fileID: 114169667020661158}
   m_Layer: 0
   m_Name: BigDot
   m_TagString: Untagged
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114127659610587182
+--- !u!114 &114169667020661158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,12 +75,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1278953032048358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0249009f69f235e4cbcd50d3b3e48892, type: 3}
+  m_Script: {fileID: 11500000, guid: e82890cb03ae7014db81fe2b0fcb02bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  earnedScore: 2600
-  ghostController: {fileID: 0}
+  earnedScore: 2500
+  isPowerPill: 1
   sound: {fileID: 8300000, guid: f1b77e1f1cb982747aae3197095fcb8e, type: 3}
 --- !u!212 &212739373821309192
 SpriteRenderer:

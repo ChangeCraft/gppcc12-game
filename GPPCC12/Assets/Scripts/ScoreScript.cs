@@ -11,14 +11,18 @@ public class ScoreScript : MonoBehaviour {
     private int earnedScore;
 
     [SerializeField]
+    private bool isPowerPill = false;
+
+    [SerializeField]
     AudioClip sound;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.tag == playerTag)
+        if(other.tag == playerTag)
         {
-            GameObject.Find("UI").GetComponent<GameUI>().AddToScore(earnedScore);
-            AudioSource.PlayClipAtPoint(sound, new Vector3(0, 0, 0));
+            other.GetComponent<Pacman>().DotCollision(earnedScore, sound, isPowerPill);
+            if(transform.parent != null)
+                transform.parent.GetComponent<Dots>().CheckChildren();
             Destroy(gameObject);
         }
     }
