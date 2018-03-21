@@ -26771,7 +26771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalPrefab: {fileID: 1984063000769792, guid: b1781a97e1426454dbb5f8f5a604c8e8,
     type: 2}
-  portalPositon: {x: 0, y: 0}
+  portalPositon: {x: 0, y: -8}
 --- !u!114 &114713711187007410
 MonoBehaviour:
   m_ObjectHideFlags: 1
